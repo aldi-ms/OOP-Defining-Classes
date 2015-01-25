@@ -51,7 +51,7 @@ namespace _02.LaptopShop
         }
 
         /// <summary>
-        /// Short laptop constructor. Use with ToShortString().
+        /// Short laptop constructor. Stringify with ToShortString().
         /// </summary>
         /// <param name="model">Laptop model.  Cannot be null or empty string.</param>
         /// <param name="price">Laptop price in BGN leva. Cannot be negative number.</param>
@@ -93,7 +93,7 @@ namespace _02.LaptopShop
                 else
                 {
                     throw new ArgumentNullException(
-                        "Model", 
+                        "model", 
                         "Laptop model cannot be null or empty string!");
                 }
             }
@@ -112,7 +112,7 @@ namespace _02.LaptopShop
                 else
                 {
                     throw new ArgumentNullException(
-                        "Manufacturer", 
+                        "manufacturer", 
                         "Laptop manufacturer cannot be null or empty string!");
                 }
             }
@@ -131,7 +131,7 @@ namespace _02.LaptopShop
                 else
                 {
                     throw new ArgumentNullException(
-                        "Processor",
+                        "processor",
                         "Laptop processor cannot be null or empty string!");
                 }
             }
@@ -150,7 +150,7 @@ namespace _02.LaptopShop
                 else
                 {
                     throw new ArgumentNullException(
-                        "Graphics",
+                        "graphics",
                         "Laptop Graphics Card cannot be null or empty string!");
                 }
             }
@@ -169,7 +169,7 @@ namespace _02.LaptopShop
                 else
                 {
                     throw new ArgumentNullException(
-                        "HDD", 
+                        "hdd", 
                         "Laptop HDD cannot be null or empty string!");
                 }
             }
@@ -188,7 +188,7 @@ namespace _02.LaptopShop
                 else
                 {
                     throw new ArgumentNullException(
-                        "Screen",
+                        "screen",
                         "Laptop screen cannot be null or empty string!");
                 }
             }
@@ -208,7 +208,7 @@ namespace _02.LaptopShop
                 {
                     throw new ArgumentException(
                         "Laptop RAM cannot be negative number!", 
-                        "RAM");
+                        "ram");
                 }
             }
         }
@@ -227,7 +227,7 @@ namespace _02.LaptopShop
                 {
                     throw new ArgumentException(
                         "Laptop Price cannot be negative number!",
-                        "Price");
+                        "price");
                 }
             }
         }
