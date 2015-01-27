@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace _03.ComputerCatalog
 {
@@ -6,54 +7,23 @@ namespace _03.ComputerCatalog
     {
         private float price;
         private string name;
-        private Component
-            motherboard,
-            cpu,
-            vga,
-            ram,
-            hdd;
+        private List<Component> components;
 
         #region Constructors
         /// <summary>
         /// Full computer constructor.
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="motherboard"></param>
-        /// <param name="cpu"></param>
-        /// <param name="vga"></param>
-        /// <param name="ram"></param>
-        /// <param name="hdd"></param>
-        /// <param name="price"></param>
+        /// <param name="name">Name of the computer.</param>
+        /// <param name="components">List of computer components.</param>
+        /// <param name="price">Price of the computer.</param>
         public Computer(
             string name, 
-            Component motherboard,
-            Component cpu,
-            Component vga,
-            Component ram,
-            Component hdd,
+            List<Component> components,
             float price)
         {
-            this.name = name;
-            this.motherboard = motherboard;
-            this.cpu = cpu;
-            this.vga = vga;
-            this.ram = ram;
-            this.hdd = hdd;
-            this.price = price;
-        }
-
-        /// <summary>
-        /// Constructor with computer name, motherboard, CPU, RAM and price.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="motherboard"></param>
-        /// <param name="cpu"></param>
-        /// <param name="ram"></param>
-        /// <param name="price"></param>
-        public Computer(string name, Component motherboard, Component cpu, Component ram, float price)
-            :this(name, motherboard, cpu, null, ram, null, price)
-        {
-
+            this.Name = name;
+            this.Components = components;
+            this.Price = price;
         }
 
         /// <summary>
@@ -61,8 +31,8 @@ namespace _03.ComputerCatalog
         /// </summary>
         /// <param name="name">Name of the computer.</param>
         /// <param name="price">Price of the computer.</param>
-        public Computer(string name, float price) 
-            :this(name, null, null, null, price)
+        public Computer(string name, float price)
+            :this(name, new List<Component>(), price)
         { }
         #endregion
 
@@ -104,97 +74,19 @@ namespace _03.ComputerCatalog
             }
         }
 
-        public Component Motherboard
+        public List<Component> Components
         {
-            get { return this.motherboard; }
+            get { return this.components; }
 
             set
             {
                 if (value != null)
                 {
-                    this.motherboard = value;
+                    this.components = value;
                 }
                 else
                 {
-                    throw new ArgumentNullException(
-                        "motherboard", 
-                        "Computer motherboard cannot be null!");
-                }
-            }
-        }
-
-        public Component CPU
-        {
-            get { return this.cpu; }
-
-            set
-            {
-                if (value != null)
-                {
-                    this.cpu = value;
-                }
-                else
-                {
-                    throw new ArgumentNullException(
-                        "cpu",
-                        "Computer CPU cannot be null!");
-                }
-            }
-        }
-
-        public Component VGA
-        {
-            get { return this.vga; }
-
-            set
-            {
-                if (value != null)
-                {
-                    this.vga = value;
-                }
-                else
-                {
-                    throw new ArgumentNullException(
-                        "vga",
-                        "Computer VGA cannot be null!");
-                }
-            }
-        }
-
-        public Component RAM
-        {
-            get { return this.ram; }
-
-            set
-            {
-                if (value != null)
-                {
-                    this.ram = value;
-                }
-                else
-                {
-                    throw new ArgumentNullException(
-                        "ram",
-                        "Computer RAM cannot be null!");
-                }
-            }
-        }
-
-        public Component HDD
-        {
-            get { return this.hdd; }
-
-            set
-            {
-                if (value != null)
-                {
-                    this.hdd = value;
-                }
-                else
-                {
-                    throw new ArgumentNullException(
-                        "hdd",
-                        "Computer HDD cannot be null!");
+                    throw new ArgumentNullException("components", "Components cannot be null!");
                 }
             }
         }
@@ -207,16 +99,10 @@ namespace _03.ComputerCatalog
             sb.AppendFormat("computer name: {0}\n", this.name);
             sb.AppendFormat("computer price: {0}lv\n", this.price);
 
-            if (this.Motherboard != null)
-                sb.AppendFormat("{0}\n", this.Motherboard.ToString());
-            if (this.CPU != null)
-                sb.AppendFormat("{0}\n", this.CPU.ToString());
-            if (this.VGA != null)
-                sb.AppendFormat("{0}\n", this.VGA.ToString());
-            if (this.RAM != null)
-                sb.AppendFormat("{0}\n", this.RAM.ToString());
-            if (this.HDD != null)
-                sb.AppendFormat("{0}", this.HDD.ToString());
+            foreach (Component component in Components)
+            {
+                sb.AppendFormat("{0}\n", component.ToString());
+            }
 
             return sb.ToString();
         }
